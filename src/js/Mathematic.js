@@ -9,20 +9,27 @@ export default class Mathematic extends Character {
     this._stoned = state;
   }
 
-  get powerAttack() {
-    return this._attack;
+  setDistance(distance) {
+    this.distance = distance;
   }
 
-  set powerAttac(distance) {
-    if (distance < 1 || distance > 10) {
+  get powerAttack() {
+    if (this.distance < 1 || this.distance > 10) {
       return;
     }
     const index = [1, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1];
     if (this.stoned === true) {
-      const attackPower = this.attack - Math.log2(distance) * 15;
+      const attackPower = this.attack - Math.log2(this.distance) * 15;
       this._attack = +attackPower.toFixed(0);
-      return;
+      // eslint-disable-next-line
+      return this._attack;
     }
-    this._attack = Number(this.attack * index[distance - 1]);
+    this._attack = Number(this.attack * index[this.distance - 1]);
+    // eslint-disable-next-line
+    return this._attack;
+  }
+
+  set powerAttack(attack) {
+    this._attack = attack;
   }
 }

@@ -12,7 +12,9 @@ test('check method Stoned', () => {
 
 test('check method powerAttack', () => {
   const magician = new Magician('Ivan');
-  magician.powerAttac = 2;
+  magician.setDistance(2);
+  // eslint-disable-next-line
+  magician.powerAttack;
   const received = magician._attack;
   const expected = 90;
   expect(received).toEqual(expected);
@@ -21,20 +23,24 @@ test('check method powerAttack', () => {
 test('check method powerAttack with stoned', () => {
   const daemon = new Daemon('Ivan');
   daemon.stoned = true;
-  daemon.powerAttac = 2;
+  daemon.setDistance(2);
+  // eslint-disable-next-line
+  daemon.powerAttack;
   const received = daemon;
   const expected = {
-    attack: 100, defence: 40, health: 100, level: 1, name: 'Ivan', type: 'Daemon', _attack: 85, _stoned: true,
+    attack: 100, defence: 40, distance: 2, health: 100, level: 1, name: 'Ivan', type: 'Daemon', _attack: 85, _stoned: true,
   };
   expect(received).toEqual(expected);
 });
 
 test('check method powerAttack with wrong distance', () => {
   const daemon = new Daemon('Ivan');
-  daemon.powerAttac = 11;
+  daemon.setDistance(11);
+  // eslint-disable-next-line
+  daemon.powerAttack;
   const received = daemon;
   const expected = {
-    attack: 100, defence: 40, health: 100, level: 1, name: 'Ivan', type: 'Daemon',
+    attack: 100, defence: 40, distance: 11, health: 100, level: 1, name: 'Ivan', type: 'Daemon',
   };
   expect(received).toEqual(expected);
 });
